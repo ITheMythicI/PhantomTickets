@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Persona 5 - Boletos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <h1 class="h1-imagen4"></h1>
+            <ul class="nav-links">
+                <h2>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#quienes-somos">Quiénes Somos</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#registro">Registro</a></li>
+                <li><a href="#inicio de sesion">Iniciar Sesion</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </h2>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Sección Inicio -->
+        <section id="inicio" class="section hero">
+            <h1 class="h1-imagen1"></h1>
+            <h2>Consigue boletos para conciertos, cine y más con el estilo de los Phantom Thieves.</h2>
+        </section>
+
+        <!-- Sección Quiénes Somos -->
+        <section id="quienes-somos" class="section about">
+         <h1 class="h1-imagen2"></h1>
+            <h2 class="body-qs">Inspirados en los Phantom Thieves, te ofrecemos experiencias únicas con un toque rebelde.</h2>
+        </section>
+
+        <!-- Sección Catálogo -->
+        <section id="catalogo" class="section catalog">
+            <h1 class="h1-imagen3"></h1>
+            <div class="grid">
+                <div class="item">🎥 Boleto de Cine (Proyeccion del anime )</div>
+                <a href="php/asientos.php" class="button-item">
+                    <div class="item">🎤 Boleto de Concierto</div>
+                </a>
+                
+                <div class="item">🎮 Pagina oficial del juego</div>
+            </div>
+        </section>
+
+        <section id="registro" class="section register">
+            <h2 class="body-unete">Compra tus boletos</h2>
+            <div>
+          
+              <!-- Registro normal -->
+              <form action="php/registro_usuario.php" method="POST" class="form">
+                <h3>Registrarse para comprar</h2>
+                    <input type="text" name="nombre" placeholder="Nombre" required>
+                    <input type="email" name="correo" placeholder="Correo" required>
+                    <input type="password" name="contraseña" placeholder="Contraseña" required>
+                    <button type="submit">Registrarse</button>
+              </form>
+          
+              <!-- Compra rápida -->
+              <form action="php/registro_rapido.php" method="POST" class="form">
+                <h3>Comprar sin registrarme</h2>
+                <input type="text" name="nombre" placeholder="Nombre completo" required>
+                <input type="email" name="correo" placeholder="Correo electrónico" required>
+                <button type="submit">Continuar sin registrarme</button>
+              </form>
+          
+            </div>
+          </section>
+
+            <section id="inicio de sesion" class="section register">
+                <h2 class="body-unete">Inicio de Sesión</h2>
+                <form action="php/login.php" method="POST" class="form">
+                    <label for="usuario">Correo electrónico:</label>
+                    <input type="text" id="correo" name="correo" placeholder="Correo" required>
+                    <label for="contrasena">Contraseña:</label>
+                    <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+
+                    <button type="submit">Iniciar Sesión</button>
+                </form>            
+        </section>
+
+        </section>
+
+        <!-- Sección Contacto -->
+        <section id="contacto" class="section contact">
+            <h2>Contacto</h2>
+            <p>¿Tienes dudas? Escríbenos a <strong>soporte@phantomtickets.com</strong></p>
+        </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <p>&copy; 2025 Phantom Tickets. Cambia el mundo, una experiencia a la vez.</p>
+    </footer>
+</body>
+
+</html>

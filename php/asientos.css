@@ -1,0 +1,158 @@
+/* Contenedor de asientos */
+.contenedor-asientos {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+    gap: 10px;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+/* Estilo de cada asiento */
+.asiento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px; /* Tamaño más grande */
+    height: 60px;
+    border: 2px solid #fff;
+    border-radius: 8px; /* Bordes más redondeados */
+    background-color: #1a1a1a; /* Fondo oscuro */
+    color: #fff;
+    font-family: Arial, sans-serif;
+    font-size: 16px; /* Texto más grande */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra */
+}
+
+/* Hover en asientos disponibles */
+.asiento:hover {
+    background-color: #007bff; /* Azul claro */
+    color: #000; /* Texto negro */
+    transform: scale(1.1); /* Efecto de zoom */
+    box-shadow: 0 6px 10px rgba(0, 123, 255, 0.5); /* Sombra azul */
+}
+
+/* Asientos ocupados */
+.asiento.ocupado {
+    background-color: #ff4d4d; /* Rojo */
+    color: #fff;
+    cursor: not-allowed;
+    border-color: #ff0000;
+    position: relative;
+}
+
+.asiento.ocupado::after {
+    content: "X"; /* Marca visual */
+    position: absolute;
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Asiento seleccionado */
+.asiento input:checked + span {
+    background-color: #00cc66; /* Verde */
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 204, 102, 0.8); /* Efecto de brillo */
+}
+
+/* Ocultar el input */
+.asiento input {
+    display: none;
+}
+
+/* Botón continuar */
+.btn-continuar {
+    background-color: #ff0000; /* Fondo rojo */
+    color: #fff; /* Texto blanco */
+    padding: 10px 20px;
+    border: 3px solid #fff; /* Borde blanco */
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Arial Black', sans-serif;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8); /* Sombra roja */
+}
+
+.btn-continuar:hover {
+    background-color: #fff; /* Fondo blanco */
+    color: #ff0000; /* Texto rojo */
+    border-color: #ff0000; /* Borde rojo */
+    transform: scale(1.1); /* Efecto de zoom */
+    animation: pulse 1s infinite; /* Efecto de pulsación */
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+    }
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+    .contenedor-asientos {
+        grid-template-columns: repeat(3, 1fr); /* Cambiar a 3 columnas en pantallas pequeñas */
+    }
+
+    .btn-continuar {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .contenedor-asientos {
+        grid-template-columns: repeat(2, 1fr); /* Cambiar a 2 columnas en pantallas muy pequeñas */
+    }
+
+    .asiento {
+        width: 50px;
+        height: 50px;
+        font-size: 12px; /* Texto más pequeño */
+    }
+
+    .btn-continuar {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
+
+/* Botón de PayPal */
+#paypal-button-container {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+}
+
+/* Botón personalizado (si es necesario) */
+.btn-pago {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 10px 20px;
+    border: 3px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: 'Arial Black', sans-serif;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+}
+
+.btn-pago:hover {
+    background-color: #fff;
+    color: #ff0000;
+    border-color: #ff0000;
+    transform: scale(1.1);
+}
