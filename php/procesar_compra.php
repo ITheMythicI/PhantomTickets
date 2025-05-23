@@ -16,8 +16,7 @@ if (isset($_POST['asiento'])) {
     $stmt->execute();
 
     // Disminuir la cantidad de boletos en el evento correspondiente
-    // Suponiendo que el evento tiene un ID (puedes ajustar según tu estructura)
-    $evento_id = 1; // Cambia este valor por el ID del evento adecuado
+    $evento_id = 1; 
     $conexion->query("UPDATE eventos SET total_boletos = total_boletos - 1 WHERE id = $evento_id");
 
     // Generar el recibo en PDF
