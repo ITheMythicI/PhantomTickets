@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . '/../fpdf/fpdf.php'; // Ruta corregida
+require __DIR__ . '/../fpdf/fpdf.php'; 
 include __DIR__ . '/conexion.php';
 
 if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['asiento_id']) || !isset($_SESSION['venta_id'])) {
