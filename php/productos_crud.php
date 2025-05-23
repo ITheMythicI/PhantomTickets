@@ -16,7 +16,7 @@ if (!isset($_SESSION["admin"])) {
     exit();
 }
 
-include("conexion.php"); // Asegúrate de que la conexión a la base de datos esté configurada correctamente
+include("conexion.php"); 
 
 // Agregar producto
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
