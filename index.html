@@ -26,7 +26,7 @@
         </nav>
     </header>
 
-    <main class="main">
+        <main class="main">
         <!-- Sección Inicio -->
         <section id="inicio" class="section hero">
             <h1 class="h1-imagen1"></h1>
@@ -34,10 +34,15 @@
         </section>
 
         <!-- Sección Quiénes Somos -->
+
     <section id="quienes-somos" class="section about">
             <h1 class="h1-imagen2"></h1>
             <h2 class="body-qs">Inspirados en los Phantom Thieves, te ofrecemos experiencias únicas con un toque
                 rebelde.</h2>
+
+        <section id="quienes-somos" class="section about">
+            <h1 class="h1-imagen2"></h1>
+            <h2 class="body-qs">Inspirados en los Phantom Thieves, te ofrecemos experiencias únicas con un toque rebelde.</h2>
         </section>
 
         <!-- Sección Catálogo -->
@@ -95,9 +100,14 @@
             window.addEventListener('resize', updateSlidePosition);
         </script>
 
-
-
-
+            <div class="grid">
+                <div class="item">🎥 Boleto de Cine (Proyección del anime)</div>
+                <a href="php/asientos.php" class="button-item">
+                    <div class="item">🎤 Boleto de Concierto</div>
+                </a>
+                <div class="item">🎮 Página oficial del juego</div>
+            </div>
+        </section>
 
 
         <!-- Sección Registro -->
@@ -112,10 +122,19 @@
                     <input type="text" name="nombre" id="nombreRegistro" placeholder="Nombre">
                     <input type="email" name="correo" id="correoRegistro" placeholder="Correo">
                     <input type="password" name="contraseña" id="contraseñaRegistro" placeholder="Contraseña">
+
+                <!-- Registro normal -->
+                <form action="php/registro_usuario.php" method="POST" class="form">
+                    <h3>Registrarse para comprar</h3>
+                    <input type="text" name="nombre" placeholder="Nombre" required>
+                    <input type="email" name="correo" placeholder="Correo" required>
+                    <input type="password" name="contraseña" placeholder="Contraseña" required>
+
                     <button type="submit">Registrarse</button>
                 </form>
 
                 <!-- Compra rápida -->
+
                 <form id="formRapido" action="php/registro_rapido.php" method="POST" class="form"
                     onsubmit="return validarRapido()">
                     <h3>Comprar sin registrarme</h3>
@@ -135,21 +154,41 @@
                 <input type="text" id="correoLogin" name="correo" placeholder="Correo">
                 <label for="contrasena">Contraseña:</label>
                 <input type="password" id="contrasenaLogin" name="contrasena" placeholder="Contraseña">
+
+                <form action="php/registro_rapido.php" method="POST" class="form">
+                    <h3>Comprar sin registrarme</h3>
+                    <input type="text" name="nombre" placeholder="Nombre completo" required>
+                    <input type="email" name="correo" placeholder="Correo electrónico" required>
+                    <button type="submit">Continuar sin registrarme</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Seccion Inicio de Sesión -->
+        <section id="inicio-de-sesion" class="section register">
+            <h2 class="body-unete">Inicio de Sesión</h2>
+            <form action="php/login.php" method="POST" class="form">
+                <label for="correo">Correo electrónico:</label>
+                <input type="text" id="correo" name="correo" placeholder="Correo" required>
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+
                 <button type="submit">Iniciar Sesión</button>
             </form>
         </section>
 
-        <!-- Sección Contacto -->
+        <!-- Seccion Contacto -->
         <section id="contacto" class="section contact">
             <h2>Contacto</h2>
             <p>¿Tienes dudas? Escríbenos a <strong>soporte@phantomtickets.com</strong></p>
         </section>
     </main>
 
-    <!-- Pie de página -->
+    <!-- Pie de pagina -->
     <footer class="footer">
         <p>&copy; 2025 Phantom Tickets. Cambia el mundo, una experiencia a la vez.</p>
     </footer>
+
 
     <!-- Validaciones -->
     <script>
@@ -189,4 +228,41 @@
     </script>
 </body>
 
+</html>
+=======
+
+    <!-- Scripts de DOM -->
+    <script>
+        // Cambio dinámico de contenido en "Quienes Somos"
+        document.querySelector(".body-qs").addEventListener("mouseover", function() {
+            this.textContent = "¡Únete a nosotros y vive la experiencia Phantom!";
+        });
+        document.querySelector(".body-qs").addEventListener("mouseout", function() {
+            this.textContent = "Inspirados en los Phantom Thieves, te ofrecemos experiencias únicas con un toque rebelde.";
+        });
+
+        // Validación de formato de correo en "Registro"
+        document.querySelectorAll(".form").forEach(form => {
+            form.addEventListener("submit", function(event) {
+                let correo = this.querySelector("input[name='correo']").value;
+                let regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresion regular para validar email | Visto en Autómatas
+
+                if (!regexCorreo.test(correo)) {
+                    alert("Por favor, introduce un correo electrónico válido.");
+                    event.preventDefault();
+                }
+            });
+        });
+
+        // Cambio de color en catalogo al hacer clic
+        document.querySelectorAll(".item").forEach(item => {
+            item.addEventListener("click", function() {
+                this.style.backgroundColor = "#ff4444"; // Cambia a rojo al hacer clic
+                setTimeout(() => this.style.backgroundColor = "", 1000); // Vuelve despues de 1 segundo
+            });
+        });
+
+    </script>
+
+</body>
 </html>
