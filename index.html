@@ -8,19 +8,20 @@
     <title>Tienda Persona 5 - Boletos</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <header class="header">
         <nav class="nav">
             <h1 class="h1-imagen4"></h1>
             <ul class="nav-links">
                 <h2>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#quienes-somos">Quiénes Somos</a></li>
-                <li><a href="#catalogo">Catálogo</a></li>
-                <li><a href="#registro">Registro</a></li>
-                <li><a href="#inicio de sesion">Iniciar Sesion</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </h2>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#quienes-somos">Quiénes Somos</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#registro">Registro</a></li>
+                    <li><a href="#inicio de sesion">Iniciar Sesion</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </h2>
             </ul>
         </nav>
     </header>
@@ -33,6 +34,12 @@
         </section>
 
         <!-- Sección Quiénes Somos -->
+
+    <section id="quienes-somos" class="section about">
+            <h1 class="h1-imagen2"></h1>
+            <h2 class="body-qs">Inspirados en los Phantom Thieves, te ofrecemos experiencias únicas con un toque
+                rebelde.</h2>
+
         <section id="quienes-somos" class="section about">
             <h1 class="h1-imagen2"></h1>
             <h2 class="body-qs">Inspirados en los Phantom Thieves, te ofrecemos experiencias únicas con un toque rebelde.</h2>
@@ -41,6 +48,58 @@
         <!-- Sección Catálogo -->
         <section id="catalogo" class="section catalog">
             <h1 class="h1-imagen3"></h1>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <a href="https://www.crunchyroll.com/es/series/G6VDWKM76/persona5-the-animation" target="_blank"
+                            class="slide-link">
+                            <img src="imgs/cine.png" alt="Cine">
+                            <div class="slide-text">🎥 Boleto de Cine (Proyección del anime)</div>
+                        </a>
+                    </div>
+                    <div class="carousel-slide">
+                        <a href="#registro" class="slide-link">
+                            <img src="imgs/concierto.jpg" alt="Concierto">
+                            <div class="slide-text">🎤 Boleto de Concierto</div>
+                        </a>
+                    </div>
+                    <div class="carousel-slide">
+                        <a href="https://persona.atlus.com/p5r" target="_blank" class="slide-link">
+                            <img src="imgs/juego.png" alt="Juego">
+                            <div class="slide-text">🎮 Página oficial del juego</div>
+                        </a>
+                    </div>
+                </div>
+                <button class="btn prev">&#10094;</button>
+                <button class="btn next">&#10095;</button>
+            </div>
+        </section>
+
+        <script>
+            const track = document.querySelector('.carousel-track');
+            const slides = Array.from(track.children);
+            const nextBtn = document.querySelector('.btn.next');
+            const prevBtn = document.querySelector('.btn.prev');
+            let currentIndex = 0;
+
+            function updateSlidePosition() {
+                const slideWidth = slides[0].getBoundingClientRect().width;
+                track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+            }
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlidePosition();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateSlidePosition();
+            });
+
+            window.addEventListener('resize', updateSlidePosition);
+        </script>
+
             <div class="grid">
                 <div class="item">🎥 Boleto de Cine (Proyección del anime)</div>
                 <a href="php/asientos.php" class="button-item">
@@ -50,20 +109,52 @@
             </div>
         </section>
 
+
         <!-- Sección Registro -->
         <section id="registro" class="section register">
             <h2 class="body-unete">Compra tus boletos</h2>
             <div>
+
+                <!-- Registro normal -->
+                <form id="formRegistro" action="php/registro_usuario.php" method="POST" class="form"
+                    onsubmit="return validarRegistro()">
+                    <h3>Registrarse para comprar</h3>
+                    <input type="text" name="nombre" id="nombreRegistro" placeholder="Nombre">
+                    <input type="email" name="correo" id="correoRegistro" placeholder="Correo">
+                    <input type="password" name="contraseña" id="contraseñaRegistro" placeholder="Contraseña">
+
                 <!-- Registro normal -->
                 <form action="php/registro_usuario.php" method="POST" class="form">
                     <h3>Registrarse para comprar</h3>
                     <input type="text" name="nombre" placeholder="Nombre" required>
                     <input type="email" name="correo" placeholder="Correo" required>
                     <input type="password" name="contraseña" placeholder="Contraseña" required>
+
                     <button type="submit">Registrarse</button>
                 </form>
 
                 <!-- Compra rápida -->
+
+                <form id="formRapido" action="php/registro_rapido.php" method="POST" class="form"
+                    onsubmit="return validarRapido()">
+                    <h3>Comprar sin registrarme</h3>
+                    <input type="text" name="nombre" id="nombreRapido" placeholder="Nombre completo">
+                    <input type="email" name="correo" id="correoRapido" placeholder="Correo electrónico">
+                    <button type="submit">Continuar sin registrarme</button>
+                </form>
+
+            </div>
+        </section>
+
+        <!-- Sección Iniciar Sesión -->
+        <section id="inicio de sesion" class="section register">
+            <h2 class="body-unete">Inicio de Sesión</h2>
+            <form id="formLogin" action="php/login.php" method="POST" class="form" onsubmit="return validarLogin()">
+                <label for="correo">Correo electrónico:</label>
+                <input type="text" id="correoLogin" name="correo" placeholder="Correo">
+                <label for="contrasena">Contraseña:</label>
+                <input type="password" id="contrasenaLogin" name="contrasena" placeholder="Contraseña">
+
                 <form action="php/registro_rapido.php" method="POST" class="form">
                     <h3>Comprar sin registrarme</h3>
                     <input type="text" name="nombre" placeholder="Nombre completo" required>
@@ -81,6 +172,7 @@
                 <input type="text" id="correo" name="correo" placeholder="Correo" required>
                 <label for="contrasena">Contraseña:</label>
                 <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+
                 <button type="submit">Iniciar Sesión</button>
             </form>
         </section>
@@ -96,6 +188,48 @@
     <footer class="footer">
         <p>&copy; 2025 Phantom Tickets. Cambia el mundo, una experiencia a la vez.</p>
     </footer>
+
+
+    <!-- Validaciones -->
+    <script>
+        function validarRegistro() {
+            const nombre = document.getElementById("nombreRegistro").value.trim();
+            const correo = document.getElementById("correoRegistro").value.trim();
+            const pass = document.getElementById("contraseñaRegistro").value.trim();
+
+            if (!nombre || !correo || !pass) {
+                alert("Por favor completa todos los campos de registro.");
+                return false;
+            }
+            return true;
+        }
+
+        function validarRapido() {
+            const nombre = document.getElementById("nombreRapido").value.trim();
+            const correo = document.getElementById("correoRapido").value.trim();
+
+            if (!nombre || !correo) {
+                alert("Por favor completa los campos para comprar sin registrarte.");
+                return false;
+            }
+            return true;
+        }
+
+        function validarLogin() {
+            const correo = document.getElementById("correoLogin").value.trim();
+            const pass = document.getElementById("contrasenaLogin").value.trim();
+
+            if (!correo || !pass) {
+                alert("Por favor completa los campos de inicio de sesión.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>
+=======
 
     <!-- Scripts de DOM -->
     <script>

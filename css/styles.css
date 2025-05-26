@@ -299,7 +299,73 @@ a:hover {
     transform: scale(1.1);
 }
 
+ .carousel-container {
+  position: relative;
+  width: 90%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 20px;
+  max-width: 1000px;
+  height: 500px;
+}
 
+.carousel-track {
+  display: flex;
+  transition: transform 0.7s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
 
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+}
 
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
 
+.slide-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+  color: white;
+}
+
+.slide-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 1.8rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.btn.prev {
+  left: 10px;
+}
+
+.btn.next {
+  right: 10px;
+}
