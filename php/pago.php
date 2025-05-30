@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // Verificar si se seleccionaron asientos
 if (!isset($_SESSION['asientos_seleccionados']) || !is_array($_SESSION['asientos_seleccionados'])) {
     echo "No hay asientos seleccionados. Por favor, selecciona al menos un asiento primero.";

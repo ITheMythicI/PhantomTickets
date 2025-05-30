@@ -110,14 +110,6 @@
             <div>
 
                 <!-- Registro normal -->
-                <form id="formRegistro" action="php/registro_usuario.php" method="POST" class="form"
-                    onsubmit="return validarRegistro()">
-                    <h3>Registrarse para comprar</h3>
-                    <input type="text" name="nombre" id="nombreRegistro" placeholder="Nombre">
-                    <input type="email" name="correo" id="correoRegistro" placeholder="Correo">
-                    <input type="password" name="contraseña" id="contraseñaRegistro" placeholder="Contraseña">
-
-                <!-- Registro normal -->
                 <form action="php/registro_usuario.php" method="POST" class="form">
                     <h3>Registrarse para comprar</h3>
                     <input type="text" name="nombre" placeholder="Nombre" required>
@@ -137,24 +129,6 @@
                     <button type="submit">Continuar sin registrarme</button>
                 </form>
 
-            </div>
-        </section>
-
-        <!-- Sección Iniciar Sesión -->
-        <section id="inicio de sesion" class="section register">
-            <h2 class="body-unete">Inicio de Sesión</h2>
-            <form id="formLogin" action="php/login.php" method="POST" class="form" onsubmit="return validarLogin()">
-                <label for="correo">Correo electrónico:</label>
-                <input type="text" id="correoLogin" name="correo" placeholder="Correo">
-                <label for="contrasena">Contraseña:</label>
-                <input type="password" id="contrasenaLogin" name="contrasena" placeholder="Contraseña">
-
-                <form action="php/registro_rapido.php" method="POST" class="form">
-                    <h3>Comprar sin registrarme</h3>
-                    <input type="text" name="nombre" placeholder="Nombre completo" required>
-                    <input type="email" name="correo" placeholder="Correo electrónico" required>
-                    <button type="submit">Continuar sin registrarme</button>
-                </form>
             </div>
         </section>
 
@@ -239,7 +213,7 @@
         document.querySelectorAll(".form").forEach(form => {
             form.addEventListener("submit", function(event) {
                 let correo = this.querySelector("input[name='correo']").value;
-                let regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresion regular para validar email | Visto en Autómatas
+                let regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expresion regular para validar email
 
                 if (!regexCorreo.test(correo)) {
                     alert("Por favor, introduce un correo electrónico válido.");
@@ -251,8 +225,8 @@
         // Cambio de color en catalogo al hacer clic
         document.querySelectorAll(".item").forEach(item => {
             item.addEventListener("click", function() {
-                this.style.backgroundColor = "#ff4444"; // Cambia a rojo al hacer clic
-                setTimeout(() => this.style.backgroundColor = "", 1000); // Vuelve despues de 1 segundo
+                this.style.backgroundColor = "#ff4444"; 
+                setTimeout(() => this.style.backgroundColor = "", 1000); 
             });
         });
 
