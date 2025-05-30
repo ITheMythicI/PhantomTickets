@@ -58,6 +58,9 @@ while ($fila = $resultado->fetch_assoc()) {
 
             <h2 class="body-unete">Realizar Pago</h2>
             <div id="paypal-button-container" class="paypal-container"></div>
+            <form action="recibo.php" method="post">
+    <button type="submit" class="admin-btn">Pagar con Tarjeta de Débito o Crédito</button>
+</form>
         </section>
     </main>
     <footer class="footer">
@@ -79,7 +82,7 @@ while ($fila = $resultado->fetch_assoc()) {
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
                     alert('Pago completado por ' + details.payer.name.given_name);
-                    window.location.href = "confirmacion.php";
+                    window.location.href = "confirmarcompra.php";
                 });
             }
         }).render('#paypal-button-container');
