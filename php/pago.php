@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 // Verificar si se seleccionaron asientos
 if (!isset($_SESSION['asientos_seleccionados']) || !is_array($_SESSION['asientos_seleccionados'])) {
     echo "No hay asientos seleccionados. Por favor, selecciona al menos un asiento primero.";
@@ -58,31 +57,50 @@ while ($fila = $resultado->fetch_assoc()) {
 
             <h2 class="body-unete">Realizar Pago</h2>
             <div id="paypal-button-container" class="paypal-container"></div>
+            <form action="recibo.php" method="post">
+</form>
         </section>
     </main>
     <footer class="footer">
         <p>&copy; 2025 PHANTOM TICKETS. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="https://www.paypal.com/sdk/js?client-id=ATL4UBEJ_LCZBcy2j17E6bvLQuAoBl2VNZPcFSaMfrw9pgGMeADZng28hX_wynKKYXxUSXqKjUuRxKfT&currency=MXN"></script>
-    <script>
-        paypal.Buttons({
-            createOrder: function(data, actions) {
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: '<?= htmlspecialchars($total_precio) ?>'
-                        }
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    alert('Pago completado por ' + details.payer.name.given_name);
-                    window.location.href = "confirmacion.php";
-                });
-            }
-        }).render('#paypal-button-container');
-    </script>
+   <!-- SDK de PayPal con Client ID SANDBOX en MXN y solo tarjeta -->
+<script src="https://www.paypal.com/sdk/js?client-id=AQ-yT-AS1wAnwEzUkChW25AiQXQX4SnCqYwP9eHZGj1SwvvpiUbOnKy2LKAE4dLsjhKmhGKjj2hMfj5m&currency=MXN&components=buttons&enable-funding=card"></script>
+
+<!-- 2. Contenedor donde se pintará el botón -->
+<div id="paypal-button-container"></div>
+
+<!-- 3. Script de configuración -->
+<script>
+paypal.Buttons({
+    fundingSource: paypal.FUNDING.CARD, // Solo mostrar botón de tarjeta
+
+    createOrder: function (data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: '<?= htmlspecialchars($total_precio) ?>' // Total desde PHP
+                }
+            }]
+        });
+    },
+
+    onApprove: function (data, actions) {
+        return actions.order.capture().then(function (details) {
+            alert('Pago completado por: ' + details.payer.name.given_name);
+            window.location.href = "procesar_compra.php"; // Redirige tras el pago
+        });
+    },
+
+    onError: function (err) {
+        console.error("Error en el pago:", err);
+        alert("Error al procesar el pago.");
+    }
+}).render('#paypal-button-container');
+</script>
+
+
+
 </body>
 </html>

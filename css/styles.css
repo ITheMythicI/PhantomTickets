@@ -178,14 +178,14 @@ h1 {
 .h1-imagen3 {
     background-image: url('../imgs/catalogo.png');
     text-align: left;
-    margin-left:70%;
+    margin-left:auto;
 }
 .h1-imagen4{
     background-image: url('../imgs/pt.png');
     background-size: contain;
     background-repeat: no-repeat;
     color: transparent;
-    width: 400%; 
+    width: 100%; 
     height: 100px;
 }
 
@@ -306,7 +306,7 @@ a:hover {
   overflow: hidden;
   border-radius: 20px;
   max-width: 1000px;
-  height: 500px;
+  aspect-ratio: 16 / 9;
 }
 
 .carousel-track {
